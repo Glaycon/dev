@@ -1,1 +1,512 @@
-Em breve muita coisa aqui!
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glaycon.dev — Estúdio & Hub de Projetos Digitais</title>
+  <meta name="description" content="Glaycon.dev: Portfólio de projetos, desenvolvimento web de alta performance, aplicativos Android e soluções de software sob medida." />
+  <meta name="keywords" content="Glaycon, Desenvolvedor Web, Software Engineer, Portfolio, Full-Stack, JavaScript, Kotlin, Node.js, C#" />
+  <meta name="author" content="Glaycon" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://glaycon.github.io/dev/" />
+  <meta property="og:title" content="Glaycon.dev — Estúdio & Hub de Projetos Digitais" />
+  <meta property="og:description" content="Projetos web, apps móveis e sistemas de alta performance desenvolvidos sob medida." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Ambient FX & Progress -->
+  <div id="scroll-bar"></div>
+  <div id="cursor"></div>
+  <canvas id="canvas"></canvas>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo">
+        <div class="logo-icon">⬡</div>
+        <div class="logo-text">Glaycon<span>.dev</span></div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#inicio" class="nav-link active">Início</a></li>
+          <li><a href="#servicos" class="nav-link">Serviços</a></li>
+          <li><a href="#projetos" class="nav-link">Projetos</a></li>
+          <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>Disponível</span>
+        </div>
+        <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Falar Agora →</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>⚡ Desenvolvimento Sob Medida</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Construindo<br />
+          <span class="typewriter-box">
+            <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
+          </span>
+        </h1>
+
+        <p class="hero-desc">
+          Desenvolvimento de software focado em performance, elegância e uso no mundo real.
+          Sites de alta conversão, aplicativos móveis e APIs robustas.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#projetos" class="btn btn-primary">Explorar Projetos ↓</a>
+          <a href="https://github.com/Glaycon" target="_blank" rel="noopener" class="btn btn-outline">GitHub Perfil ↗</a>
+        </div>
+      </div>
+
+      <!-- Floating 3D Glass Widgets -->
+      <div class="hero-visual">
+        <div class="glass-card hero-widget-1">
+          <div class="widget-header">
+            <span class="widget-label">Tecnologias Principais</span>
+            <span style="color: var(--primary);">✦</span>
+          </div>
+          <div class="stack-tags">
+            <span class="tag highlight">JavaScript</span>
+            <span class="tag highlight">HTML5 / CSS3</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">C# / WPF</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+
+        <div class="glass-card hero-widget-2">
+          <div class="widget-header">
+            <span class="widget-label">Projeto Destaque</span>
+            <span class="status-pill" style="padding: 0.15rem 0.5rem; font-size: 0.7rem;">🟢 Online</span>
+          </div>
+          <div class="project-mini">
+            <div class="project-mini-icon">🚀</div>
+            <div class="project-mini-info">
+              <h4>Glaycon/dev Studio</h4>
+              <p>Hub Interativo & Portfólio</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card hero-widget-3">
+          <div class="widget-header">
+            <span class="widget-label">Foco & Qualidade</span>
+          </div>
+          <div class="metric-number">100%</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">Código limpo, seguro e otimizado</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>Rolar para baixo</span>
+    </div>
+  </section>
+
+  <!-- COUNTERS SECTION -->
+  <section class="stats-bar">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <div class="stat-value"><span class="stat-count" data-target="15">0</span><span>+</span></div>
+        <div class="stat-label">Repositórios & Projetos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><span class="stat-count" data-target="100">0</span><span>%</span></div>
+        <div class="stat-label">Código Personalizado</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><span class="stat-count" data-target="24">0</span><span>h</span></div>
+        <div class="stat-label">Entrega Rápida para Landing Pages</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><span class="stat-count" data-target="99">0</span><span>.9%</span></div>
+        <div class="stat-label">Uptime & Performance</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="servicos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">O que oferecemos</span>
+        <h2 class="section-title">Soluções digitais prontas para escalar</h2>
+        <p class="section-subtitle">Projetos desenvolvidos do zero para atender necessidades reais de usuários e empresas.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3 class="service-title">Desenvolvimento Web</h3>
+          <p class="service-desc">Sites institucionais, landing pages de alta conversão e aplicações web modernas com animações fluidas e SEO estratégico.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3 class="service-title">Aplicativos Mobile</h3>
+          <p class="service-desc">Criação de aplicativos nativos Android (Kotlin) otimizados para rápida navegação, suporte offline e UI intuitiva.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3 class="service-title">APIs & Backend</h3>
+          <p class="service-desc">Arquitetura de servidores em Node.js / Express, microsserviços, automação de dados e bancos de dados relacionais e NoSQL.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3 class="service-title">Sistemas Desktop & IPTV</h3>
+          <p class="service-desc">Players multimídia, ferramentas em C# / WPF e scripts automatizados de alta velocidade para tarefas complexas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SHOWCASE SECTION -->
+  <section id="projetos" class="section">
+    <div class="container">
+      <div class="projects-header">
+        <div>
+          <span class="section-tag">Nosso Portfólio</span>
+          <h2 class="section-title">Projetos em Destaque</h2>
+        </div>
+
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="web">Web Apps</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="desktop">Desktop</button>
+          <button class="filter-btn" data-filter="backend">Backend</button>
+        </div>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Injetado dinamicamente via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS & TECH STACK SECTION -->
+  <section id="habilidades" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Competências</span>
+        <h2 class="section-title">Tecnologias & Ferramentas</h2>
+        <p class="section-subtitle">Conjunto de tecnologias utilizadas no desenvolvimento no dia a dia.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-cat-title">
+            <span class="skill-cat-icon">🎨</span>
+            <span>Frontend & UI</span>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">HTML5 / CSS3 / Vanilla JS</span><span class="skill-level">95%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-progress="95%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Responsive & Glassmorphism UI</span><span class="skill-level">90%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-progress="90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Canvas Animations & FX</span><span class="skill-level">85%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-progress="85%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-title">
+            <span class="skill-cat-icon">⚡</span>
+            <span>Backend & Banco de Dados</span>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Node.js / Express</span><span class="skill-level">88%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-progress="88%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">MySQL / PostgreSQL</span><span class="skill-level">85%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-progress="85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">C# / WPF Desktop</span><span class="skill-level">80%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-progress="80%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-title">
+            <span class="skill-cat-icon">🛠️</span>
+            <span>Mobile & DevOps</span>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Android / Kotlin</span><span class="skill-level">82%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-progress="82%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Git / GitHub Actions</span><span class="skill-level">90%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-progress="90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span class="skill-name">Docker & Cloud Hosting</span><span class="skill-level">78%</span></div>
+              <div class="skill-bar"><div class="skill-progress" data-progress="78%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME SECTION -->
+  <section id="sobre" class="section">
+    <div class="container">
+      <div class="about-box">
+        <div class="about-text">
+          <span class="section-tag">Sobre Glaycon.dev</span>
+          <h3>Focado em resolver problemas com software elegante</h3>
+          <p>
+            Desenvolvedor apaixonado por criar produtos digitais que funcionam de verdade no dia a dia.
+            Acredito na simplicidade, na escrita de código limpo e em entregas rápidas com atenção a cada detalhe visual e funcional.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <div class="highlight-text">
+                <strong>Desenvolvimento Focado em Resultados</strong>
+                <span>Aplicações construídas para resolver dores específicas com máxima eficiência.</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <div class="highlight-text">
+                <strong>Design & UX Futurista</strong>
+                <span>Interfaces fluidas com temas modernos que impressionam no primeiro olhar.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Box Visual -->
+        <div class="terminal-box">
+          <div class="terminal-bar">
+            <div class="term-dot red"></div>
+            <div class="term-dot yellow"></div>
+            <div class="term-dot green"></div>
+            <span class="term-title">bash — glaycon@dev:~</span>
+          </div>
+          <div class="terminal-body">
+            <div class="term-line"><span class="term-prompt">$</span> git clone https://github.com/Glaycon/dev.git</div>
+            <div class="term-line"><span class="term-comment"># Clonando repositório principal...</span></div>
+            <div class="term-line"><span class="term-prompt">$</span> cd dev && npm run build</div>
+            <div class="term-line"><span class="term-comment">✔ Compilação concluída em 0.42s</span></div>
+            <div class="term-line"><span class="term-prompt">$</span> status</div>
+            <div class="term-line" style="color:var(--accent);">🟢 Sistema ativo & pronto para novas parcerias!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contato" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Vamos conversar</span>
+        <h2 class="section-title">Inicie o seu próximo projeto</h2>
+        <p class="section-subtitle">Tem uma ideia ou precisa de um sistema desenvolvido com rapidez e qualidade? Entre em contato agora.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-card-icon">💬</div>
+            <div class="contact-card-detail">
+              <small>WhatsApp Direct</small>
+              <strong><a href="https://wa.me/5500000000000" target="_blank" rel="noopener">Falar no WhatsApp →</a></strong>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">✉️</div>
+            <div class="contact-card-detail">
+              <small>E-mail Oficial</small>
+              <strong>glaycon@dev.com</strong>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">🐙</div>
+            <div class="contact-card-detail">
+              <small>Repositórios & Código</small>
+              <strong><a href="https://github.com/Glaycon" target="_blank" rel="noopener">github.com/Glaycon ↗</a></strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-box">
+          <form id="contact-form">
+            <div class="form-group">
+              <label class="form-label" for="name">Seu Nome</label>
+              <input type="text" id="name" class="form-input" placeholder="Ex: Maria Silva" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Seu E-mail ou WhatsApp</label>
+              <input type="text" id="email" class="form-input" placeholder="Ex: maria@email.com ou (11) 99999-9999" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Mensagem / Detalhes do Projeto</label>
+              <textarea id="message" class="form-input" placeholder="Conte um pouco sobre o que você deseja construir..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALS -->
+  <!-- Project Detail Modal -->
+  <div class="modal-backdrop" id="project-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeProjectModal()">✕</button>
+      <div id="project-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Add Project Modal Form -->
+  <div class="modal-backdrop" id="add-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeAddProjectModal()">✕</button>
+      <h2 class="modal-title">Cadastrar Novo Projeto</h2>
+      <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Adicione um repositório ou projeto ao catálogo local.</p>
+      
+      <form onsubmit="saveNewProject(event)">
+        <div class="form-group">
+          <label class="form-label">Nome do Projeto *</label>
+          <input type="text" name="title" class="form-input" placeholder="Ex: App de Finanças" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Categoria *</label>
+          <select name="category" class="form-input" required style="background:#080d1a;">
+            <option value="web">Web App</option>
+            <option value="mobile">Mobile Android</option>
+            <option value="desktop">Desktop</option>
+            <option value="backend">Backend / API</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Ícone / Emoji</label>
+          <input type="text" name="icon" class="form-input" placeholder="Ex: ⚡ ou 🚀" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Descrição Resumida *</label>
+          <textarea name="desc" class="form-input" placeholder="Breve resumo das funcionalidades..." required style="min-height:80px;"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tecnologias (separadas por vírgula)</label>
+          <input type="text" name="tech" class="form-input" placeholder="Ex: React, Node.js, MongoDB" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Link para Demo Ao Vivo (Opcional)</label>
+          <input type="url" name="demoUrl" class="form-input" placeholder="https://site.com" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Link para Repositório GitHub (Opcional)</label>
+          <input type="url" name="githubUrl" class="form-input" placeholder="https://github.com/Glaycon/repo" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Salvar Projeto →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#inicio" class="logo">
+            <div class="logo-icon">⬡</div>
+            <div class="logo-text">Glaycon<span>.dev</span></div>
+          </a>
+          <p>Plataforma oficial de exibição de projetos, sistemas web e código de alta performance.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Links Úteis</h4>
+          <ul class="footer-links">
+            <li><a href="https://github.com/Glaycon" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://glaycon.github.io/dev/" target="_blank" rel="noopener">GitHub Pages</a></li>
+            <li><a href="#contato">Contato Direct</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Glaycon.dev. Todos os direitos reservados.</p>
+        <a href="#inicio" class="back-to-top" title="Voltar ao topo">↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
