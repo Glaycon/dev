@@ -422,58 +422,7 @@
     </div>
   </div>
 
-  <!-- Add Project Modal Form -->
-  <div class="modal-backdrop" id="add-modal">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeAddProjectModal()">✕</button>
-      <h2 class="modal-title">Cadastrar Novo Projeto</h2>
-      <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Adicione um repositório ou projeto ao catálogo local.</p>
-      
-      <form onsubmit="saveNewProject(event)">
-        <div class="form-group">
-          <label class="form-label">Nome do Projeto *</label>
-          <input type="text" name="title" class="form-input" placeholder="Ex: App de Finanças" required />
-        </div>
 
-        <div class="form-group">
-          <label class="form-label">Categoria *</label>
-          <select name="category" class="form-input" required style="background:#080d1a;">
-            <option value="web">Web App</option>
-            <option value="mobile">Mobile Android</option>
-            <option value="desktop">Desktop</option>
-            <option value="backend">Backend / API</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Ícone / Emoji</label>
-          <input type="text" name="icon" class="form-input" placeholder="Ex: ⚡ ou 🚀" />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Descrição Resumida *</label>
-          <textarea name="desc" class="form-input" placeholder="Breve resumo das funcionalidades..." required style="min-height:80px;"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Tecnologias (separadas por vírgula)</label>
-          <input type="text" name="tech" class="form-input" placeholder="Ex: React, Node.js, MongoDB" />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Link para Demo Ao Vivo (Opcional)</label>
-          <input type="url" name="demoUrl" class="form-input" placeholder="https://site.com" />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Link para Repositório GitHub (Opcional)</label>
-          <input type="url" name="githubUrl" class="form-input" placeholder="https://github.com/Glaycon/repo" />
-        </div>
-
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Salvar Projeto →</button>
-      </form>
-    </div>
-  </div>
 
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div id="toast-container"></div>

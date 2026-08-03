@@ -267,16 +267,42 @@ function initCounters() {
 const defaultProjects = [
   {
     id: 101,
-    title: "TPB DEV — Google Play Store",
+    title: "Sorteio Rápido",
     category: "mobile",
     categoryLabel: "Mobile Android",
-    desc: "Aplicativos Android nativos desenvolvidos com Android Studio & Kotlin publicados na Google Play Store.",
-    icon: "🤖",
-    status: "No Ar no Google Play",
+    desc: "Aplicativo Android para realização de sorteios instantâneos de números, nomes e listas com alta performance.",
+    icon: "🎲",
+    status: "+10k Downloads",
     tech: ["Android Studio", "Kotlin", "Android SDK", "Google Play"],
     demoUrl: "https://play.google.com/store/apps/developer?id=TPB+DEV",
     githubUrl: "https://github.com/Glaycon",
-    longDesc: "Portfólio de aplicativos móveis da marca TPB DEV no Google Play Store, desenvolvidos nativamente com Android Studio, Kotlin e arquitetura moderna de software."
+    longDesc: "Aplicativo Android nativo desenvolvido em Kotlin com mais de 10.000 downloads no Google Play Store. Permite realizar sorteios aleatórios de números, listas de nomes, equipes e itens com interface limpa e intuitiva."
+  },
+  {
+    id: 102,
+    title: "Calcular Metro Quadrado",
+    category: "mobile",
+    categoryLabel: "Mobile Android",
+    desc: "Ferramenta Android de utilidade para cálculo preciso de áreas, metros quadrados e quantitativos para obras.",
+    icon: "📐",
+    status: "No Ar no Google Play",
+    tech: ["Android Studio", "Kotlin", "Material Design", "Room"],
+    demoUrl: "https://play.google.com/store/apps/developer?id=TPB+DEV",
+    githubUrl: "https://github.com/Glaycon",
+    longDesc: "Aplicativo para medição e cálculo de área de superfícies, cômodos e pisos em metros quadrados, facilitando o dimensionamento em construções e reformas."
+  },
+  {
+    id: 103,
+    title: "GLOBAL RÁDIO",
+    category: "mobile",
+    categoryLabel: "Mobile Android",
+    desc: "Aplicativo móvel para transmissão contínua de áudio e streaming de rádios online com baixa latência.",
+    icon: "📻",
+    status: "No Ar no Google Play",
+    tech: ["Android Studio", "Kotlin", "ExoPlayer", "Streaming API"],
+    demoUrl: "https://play.google.com/store/apps/developer?id=TPB+DEV",
+    githubUrl: "https://github.com/Glaycon",
+    longDesc: "App de streaming multimídia para Android que permite ouvir rádios online de diversos gêneros com player de áudio otimizado e reprodução em segundo plano."
   },
   {
     id: 1,
@@ -295,7 +321,7 @@ const defaultProjects = [
     id: 2,
     title: "PlayTVZ IPTV Player",
     category: "desktop",
-    categoryLabel: "Desktop / App",
+    categoryLabel: "Desktop App",
     desc: "Player IPTV desktop com renderização acelerada por GPU, EPG integrado e suporte a múltiplos formatos.",
     icon: "📺",
     status: "Ativo",
@@ -320,15 +346,7 @@ const defaultProjects = [
 ];
 
 function getProjects() {
-  const saved = localStorage.getItem('glaycon_projects');
-  if (saved) {
-    try { return JSON.parse(saved); } catch (e) { return defaultProjects; }
-  }
   return defaultProjects;
-}
-
-function saveProjects(projects) {
-  localStorage.setItem('glaycon_projects', JSON.stringify(projects));
 }
 
 function initProjects() {
@@ -375,7 +393,7 @@ function renderProjects(category) {
           <div class="project-tech">${techTags}</div>
           <div class="project-actions">
             <button class="btn btn-outline btn-sm" onclick="openProjectModal(${p.id})">Detalhes</button>
-            ${p.demoUrl && p.demoUrl !== '#' ? `<a href="${p.demoUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Ver Demo →</a>` : ''}
+            ${p.demoUrl && p.demoUrl !== '#' ? `<a href="${p.demoUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Ver na Store / Demo →</a>` : ''}
             ${p.githubUrl ? `<a href="${p.githubUrl}" target="_blank" rel="noopener" class="btn btn-outline btn-sm" title="Código no GitHub">GitHub ↗</a>` : ''}
           </div>
         </div>
@@ -383,19 +401,10 @@ function renderProjects(category) {
     `;
   });
 
-  // Always include the "Add New Project" interactive card
-  html += `
-    <div class="add-project-card" onclick="openAddProjectModal()">
-      <div class="add-project-icon">+</div>
-      <h3>Adicionar Novo Projeto</h3>
-      <p style="font-size:0.85rem; color:var(--text-muted);">Cadastre um novo repositório ou projeto no seu portfólio</p>
-    </div>
-  `;
-
   grid.innerHTML = html;
 }
 
-// Global modal functions for project viewing and addition
+// Global modal functions for project viewing
 window.openProjectModal = function(id) {
   const projects = getProjects();
   const project = projects.find(p => p.id === id);
@@ -417,7 +426,7 @@ window.openProjectModal = function(id) {
     </div>
 
     <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-      ${project.demoUrl && project.demoUrl !== '#' ? `<a href="${project.demoUrl}" target="_blank" rel="noopener" class="btn btn-primary">Acessar Projeto Vivo →</a>` : ''}
+      ${project.demoUrl && project.demoUrl !== '#' ? `<a href="${project.demoUrl}" target="_blank" rel="noopener" class="btn btn-primary">Ver no Google Play / Demo →</a>` : ''}
       ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" rel="noopener" class="btn btn-outline">Ver Repositório no GitHub</a>` : ''}
     </div>
   `;
@@ -427,57 +436,6 @@ window.openProjectModal = function(id) {
 
 window.closeProjectModal = function() {
   document.getElementById('project-modal')?.classList.remove('active');
-};
-
-window.openAddProjectModal = function() {
-  document.getElementById('add-modal')?.classList.add('active');
-};
-
-window.closeAddProjectModal = function() {
-  document.getElementById('add-modal')?.classList.remove('active');
-};
-
-window.saveNewProject = function(event) {
-  event.preventDefault();
-  const form = event.target;
-
-  const title = form.title.value.trim();
-  const category = form.category.value;
-  const desc = form.desc.value.trim();
-  const icon = form.icon.value.trim() || '💻';
-  const techString = form.tech.value.trim();
-  const demoUrl = form.demoUrl.value.trim();
-  const githubUrl = form.githubUrl.value.trim();
-
-  if (!title || !desc) {
-    showToast('Por favor, preencha os campos obrigatórios!', 'error');
-    return;
-  }
-
-  const tech = techString ? techString.split(',').map(t => t.trim()) : ['HTML', 'JS'];
-  const projects = getProjects();
-
-  const newProj = {
-    id: Date.now(),
-    title,
-    category,
-    categoryLabel: category.toUpperCase(),
-    desc,
-    icon,
-    status: "Novo",
-    tech,
-    demoUrl: demoUrl || "#",
-    githubUrl: githubUrl || "https://github.com/Glaycon",
-    longDesc: desc
-  };
-
-  projects.unshift(newProj);
-  saveProjects(projects);
-
-  renderProjects('all');
-  closeAddProjectModal();
-  form.reset();
-  showToast('Projeto cadastrado com sucesso!', 'success');
 };
 
 /* ==========================================================================
