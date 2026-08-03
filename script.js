@@ -189,10 +189,10 @@ function initTypewriter() {
   if (!target) return;
 
   const words = [
-    "Experiências Web de Alta Performance.",
-    "Aplicativos & Sistemas Sob Medida.",
-    "Soluções Full-Stack Modernas.",
-    "Interfaces Futuristas & Escaláveis."
+    "Apps Android no Google Play (TPB DEV).",
+    "Especialista em Android Studio & Kotlin.",
+    "Sistemas Web & APIs de Alta Performance.",
+    "Soluções Mobile & Desktop Sob Medida."
   ];
 
   let wordIndex = 0;
@@ -266,6 +266,19 @@ function initCounters() {
    ========================================================================== */
 const defaultProjects = [
   {
+    id: 101,
+    title: "TPB DEV — Google Play Store",
+    category: "mobile",
+    categoryLabel: "Mobile Android",
+    desc: "Aplicativos Android nativos desenvolvidos com Android Studio & Kotlin publicados na Google Play Store.",
+    icon: "🤖",
+    status: "No Ar no Google Play",
+    tech: ["Android Studio", "Kotlin", "Android SDK", "Google Play"],
+    demoUrl: "https://play.google.com/store/apps/developer?id=TPB+DEV",
+    githubUrl: "https://github.com/Glaycon",
+    longDesc: "Portfólio de aplicativos móveis da marca TPB DEV no Google Play Store, desenvolvidos nativamente com Android Studio, Kotlin e arquitetura moderna de software."
+  },
+  {
     id: 1,
     title: "Glaycon/dev Studio",
     category: "web",
@@ -303,19 +316,6 @@ const defaultProjects = [
     demoUrl: "#",
     githubUrl: "https://github.com/Glaycon",
     longDesc: "API RESTful resiliente arquitetada com Redis para cache dinâmico e contêineres Docker automatizados."
-  },
-  {
-    id: 4,
-    title: "Smart Mobile Client",
-    category: "mobile",
-    categoryLabel: "Mobile Android",
-    desc: "Aplicativo Android nativo com sincronização offline-first e interface intuitiva.",
-    icon: "📱",
-    status: "Publicado",
-    tech: ["Kotlin", "Android SDK", "Room", "Coroutines"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/Glaycon",
-    longDesc: "App móvel otimizado para celulares de baixo custo com gerenciamento eficiente de energia e dados."
   }
 ];
 
