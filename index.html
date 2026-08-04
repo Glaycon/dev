@@ -3,470 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glaycon.dev — Estúdio & Hub de Projetos Digitais</title>
-  <meta name="description" content="Glaycon.dev: Portfólio de projetos, desenvolvimento web de alta performance, aplicativos Android e soluções de software sob medida." />
-  <meta name="keywords" content="Glaycon, Desenvolvedor Web, Software Engineer, Portfolio, Full-Stack, JavaScript, Kotlin, Node.js, C#" />
-  <meta name="author" content="Glaycon" />
+  <title>Glaycon.dev — Em breve novidades!</title>
+  <meta name="description" content="Em breve novidades por aqui! Acompanhe nossos novos projetos e desenvolvimentos." />
   
-  <!-- Open Graph / Social Media -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://glaycon.github.io/dev/" />
-  <meta property="og:title" content="Glaycon.dev — Estúdio & Hub de Projetos Digitais" />
-  <meta property="og:description" content="Projetos web, apps móveis e sistemas de alta performance desenvolvidos sob medida." />
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet" />
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #050811;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+    #canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(11, 17, 32, 0.75);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 24px;
+      padding: 3.5rem 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 240, 255, 0.1);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 999px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: #00f0ff;
+      margin-bottom: 1.75rem;
+    }
+
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #00f0ff;
+      box-shadow: 0 0 10px #00f0ff;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #00f0ff, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2.25rem;
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00f0ff, #8b5cf6);
+      color: #000;
+      box-shadow: 0 4px 20px rgba(0, 240, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 240, 255, 0.5);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f8fafc;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #00f0ff;
+      color: #00f0ff;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Ambient FX & Progress -->
-  <div id="scroll-bar"></div>
-  <div id="cursor"></div>
   <canvas id="canvas"></canvas>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="#inicio" class="logo">
-        <div class="logo-icon">⬡</div>
-        <div class="logo-text">Glaycon<span>.dev</span></div>
-      </a>
-
-      <nav>
-        <ul class="nav-menu" id="nav-menu">
-          <li><a href="#inicio" class="nav-link active">Início</a></li>
-          <li><a href="#servicos" class="nav-link">Serviços</a></li>
-          <li><a href="#projetos" class="nav-link">Projetos</a></li>
-          <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
-          <li><a href="#sobre" class="nav-link">Sobre</a></li>
-          <li><a href="#contato" class="nav-link">Contato</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <div class="status-pill">
-          <span class="status-dot"></span>
-          <span>Disponível</span>
-        </div>
-        <a href="https://wa.me/5531991512019" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Falar Agora →</a>
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu">☰</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section id="inicio" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span>🤖 Especialista em Android Studio (Kotlin) & Full-Stack</span>
-        </div>
-        
-        <h1 class="hero-title">
-          Construindo<br />
-          <span class="typewriter-box">
-            <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
-          </span>
-        </h1>
-
-        <p class="hero-desc">
-          Desenvolvimento de aplicativos Android nativos com Android Studio & Kotlin, 
-          além de sistemas web e APIs de alta performance. Desenvolvedor oficial <strong>TPB DEV</strong> no Google Play.
-        </p>
-
-        <div class="hero-btns">
-          <a href="https://play.google.com/store/apps/developer?id=TPB+DEV" target="_blank" rel="noopener" class="btn btn-primary">Apps no Google Play ↗</a>
-          <a href="#projetos" class="btn btn-outline">Ver Portfólio ↓</a>
-        </div>
-      </div>
-
-      <!-- Floating 3D Glass Widgets -->
-      <div class="hero-visual">
-        <div class="glass-card hero-widget-1">
-          <div class="widget-header">
-            <span class="widget-label">Tecnologias Principais</span>
-            <span style="color: var(--primary);">✦</span>
-          </div>
-          <div class="stack-tags">
-            <span class="tag highlight">Android Studio</span>
-            <span class="tag highlight">Kotlin</span>
-            <span class="tag highlight">Java</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML5 / CSS3</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">C# / WPF</span>
-          </div>
-        </div>
-
-        <div class="glass-card hero-widget-2">
-          <div class="widget-header">
-            <span class="widget-label">Projeto Destaque</span>
-            <span class="status-pill" style="padding: 0.15rem 0.5rem; font-size: 0.7rem;">🟢 Online</span>
-          </div>
-          <div class="project-mini">
-            <div class="project-mini-icon">🚀</div>
-            <div class="project-mini-info">
-              <h4>Glaycon/dev Studio</h4>
-              <p>Hub Interativo & Portfólio</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass-card hero-widget-3">
-          <div class="widget-header">
-            <span class="widget-label">Foco & Qualidade</span>
-          </div>
-          <div class="metric-number">100%</div>
-          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">Código limpo, seguro e otimizado</p>
-        </div>
-      </div>
+  <div class="card">
+    <div class="badge">
+      <span class="dot"></span>
+      <span>Repositório Glaycon/dev</span>
     </div>
 
-    <div class="scroll-indicator">
-      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
-      <span>Rolar para baixo</span>
-    </div>
-  </section>
+    <h1>Em breve novidades por aqui!!!</h1>
 
-  <!-- COUNTERS SECTION -->
-  <section class="stats-bar">
-    <div class="container stats-grid">
-      <div class="stat-item">
-        <div class="stat-value"><span class="stat-count" data-target="15">0</span><span>+</span></div>
-        <div class="stat-label">Repositórios & Projetos</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value"><span class="stat-count" data-target="100">0</span><span>%</span></div>
-        <div class="stat-label">Código Personalizado</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value"><span class="stat-count" data-target="24">0</span><span>h</span></div>
-        <div class="stat-label">Entrega Rápida para Landing Pages</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value"><span class="stat-count" data-target="99">0</span><span>.9%</span></div>
-        <div class="stat-label">Uptime & Performance</div>
-      </div>
-    </div>
-  </section>
+    <p>
+      Estamos preparando novos desenvolvimentos e atualizações para esta área. 
+      Enquanto isso, você pode conferir o meu portfólio completo e projetos ativos no site principal.
+    </p>
 
-  <!-- SERVICES SECTION -->
-  <section id="servicos" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">O que oferecemos</span>
-        <h2 class="section-title">Soluções digitais prontas para escalar</h2>
-        <p class="section-subtitle">Projetos desenvolvidos do zero para atender necessidades reais de usuários e empresas.</p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">🌐</div>
-          <h3 class="service-title">Desenvolvimento Web</h3>
-          <p class="service-desc">Sites institucionais, landing pages de alta conversão e aplicações web modernas com animações fluidas e SEO estratégico.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">📱</div>
-          <h3 class="service-title">Aplicativos Mobile</h3>
-          <p class="service-desc">Criação de aplicativos nativos Android (Kotlin) otimizados para rápida navegação, suporte offline e UI intuitiva.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">⚙️</div>
-          <h3 class="service-title">APIs & Backend</h3>
-          <p class="service-desc">Arquitetura de servidores em Node.js / Express, microsserviços, automação de dados e bancos de dados relacionais e NoSQL.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">💻</div>
-          <h3 class="service-title">Sistemas Desktop & IPTV</h3>
-          <p class="service-desc">Players multimídia, ferramentas em C# / WPF e scripts automatizados de alta velocidade para tarefas complexas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS SHOWCASE SECTION -->
-  <section id="projetos" class="section">
-    <div class="container">
-      <div class="projects-header">
-        <div>
-          <span class="section-tag">Nosso Portfólio</span>
-          <h2 class="section-title">Projetos em Destaque</h2>
-        </div>
-
-        <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="web">Web Apps</button>
-          <button class="filter-btn" data-filter="mobile">Mobile</button>
-          <button class="filter-btn" data-filter="desktop">Desktop</button>
-          <button class="filter-btn" data-filter="backend">Backend</button>
-        </div>
-      </div>
-
-      <div class="projects-grid" id="projects-grid">
-        <!-- Injetado dinamicamente via JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS & TECH STACK SECTION -->
-  <section id="habilidades" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">Competências</span>
-        <h2 class="section-title">Tecnologias & Ferramentas</h2>
-        <p class="section-subtitle">Conjunto de tecnologias utilizadas no desenvolvimento no dia a dia.</p>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-category">
-          <div class="skill-cat-title">
-            <span class="skill-cat-icon">🤖</span>
-            <span>Android Studio & Mobile (Especialidade)</span>
-          </div>
-          <div class="skill-list">
-            <div class="skill-item">
-              <div class="skill-info"><span class="skill-name">Android Studio & Kotlin</span><span class="skill-level">98%</span></div>
-              <div class="skill-bar"><div class="skill-progress" data-progress="98%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span class="skill-name">Android Native SDK & Coroutines</span><span class="skill-level">95%</span></div>
-              <div class="skill-bar"><div class="skill-progress" data-progress="95%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span class="skill-name">Publicação Google Play (TPB DEV)</span><span class="skill-level">95%</span></div>
-              <div class="skill-bar"><div class="skill-progress" data-progress="95%"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <div class="skill-cat-title">
-            <span class="skill-cat-icon">🎨</span>
-            <span>Frontend & UI Web</span>
-          </div>
-          <div class="skill-list">
-            <div class="skill-item">
-              <div class="skill-info"><span class="skill-name">HTML5 / CSS3 / Vanilla JS</span><span class="skill-level">95%</span></div>
-              <div class="skill-bar"><div class="skill-progress" data-progress="95%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span class="skill-name">Responsive & Glassmorphism UI</span><span class="skill-level">90%</span></div>
-              <div class="skill-bar"><div class="skill-progress" data-progress="90%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span class="skill-name">Canvas Animations & FX</span><span class="skill-level">85%</span></div>
-              <div class="skill-bar"><div class="skill-progress" data-progress="85%"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <div class="skill-cat-title">
-            <span class="skill-cat-icon">⚡</span>
-            <span>Backend & Banco de Dados</span>
-          </div>
-          <div class="skill-list">
-            <div class="skill-item">
-              <div class="skill-info"><span class="skill-name">Node.js / Express</span><span class="skill-level">88%</span></div>
-              <div class="skill-bar"><div class="skill-progress" data-progress="88%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span class="skill-name">MySQL / PostgreSQL</span><span class="skill-level">85%</span></div>
-              <div class="skill-bar"><div class="skill-progress" data-progress="85%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span class="skill-name">C# / WPF Desktop</span><span class="skill-level">80%</span></div>
-              <div class="skill-bar"><div class="skill-progress" data-progress="80%"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT ME SECTION -->
-  <section id="sobre" class="section">
-    <div class="container">
-      <div class="about-box">
-        <div class="about-text">
-          <span class="section-tag">Sobre Glaycon.dev</span>
-          <h3>Focado em resolver problemas com software elegante</h3>
-          <p>
-            Desenvolvedor apaixonado por criar produtos digitais que funcionam de verdade no dia a dia.
-            Acredito na simplicidade, na escrita de código limpo e em entregas rápidas com atenção a cada detalhe visual e funcional.
-          </p>
-          <div class="about-highlights">
-            <div class="highlight-item">
-              <span class="highlight-icon">✓</span>
-              <div class="highlight-text">
-                <strong>Desenvolvimento Focado em Resultados</strong>
-                <span>Aplicações construídas para resolver dores específicas com máxima eficiência.</span>
-              </div>
-            </div>
-            <div class="highlight-item">
-              <span class="highlight-icon">✓</span>
-              <div class="highlight-text">
-                <strong>Design & UX Futurista</strong>
-                <span>Interfaces fluidas com temas modernos que impressionam no primeiro olhar.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Terminal Box Visual -->
-        <div class="terminal-box">
-          <div class="terminal-bar">
-            <div class="term-dot red"></div>
-            <div class="term-dot yellow"></div>
-            <div class="term-dot green"></div>
-            <span class="term-title">bash — glaycon@dev:~</span>
-          </div>
-          <div class="terminal-body">
-            <div class="term-line"><span class="term-prompt">$</span> git clone https://github.com/Glaycon/dev.git</div>
-            <div class="term-line"><span class="term-comment"># Clonando repositório principal...</span></div>
-            <div class="term-line"><span class="term-prompt">$</span> cd dev && npm run build</div>
-            <div class="term-line"><span class="term-comment">✔ Compilação concluída em 0.42s</span></div>
-            <div class="term-line"><span class="term-prompt">$</span> status</div>
-            <div class="term-line" style="color:var(--accent);">🟢 Sistema ativo & pronto para novas parcerias!</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contato" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">Vamos conversar</span>
-        <h2 class="section-title">Inicie o seu próximo projeto</h2>
-        <p class="section-subtitle">Tem uma ideia ou precisa de um sistema desenvolvido com rapidez e qualidade? Entre em contato agora.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-card">
-            <div class="contact-card-icon">💬</div>
-            <div class="contact-card-detail">
-              <small>WhatsApp Direct</small>
-              <strong><a href="https://wa.me/5531991512019" target="_blank" rel="noopener">(31) 99151-2019 ↗</a></strong>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <div class="contact-card-icon">✉️</div>
-            <div class="contact-card-detail">
-              <small>E-mail Oficial</small>
-              <strong><a href="mailto:glaycon25@gmail.com">glaycon25@gmail.com</a></strong>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <div class="contact-card-icon">🤖</div>
-            <div class="contact-card-detail">
-              <small>Google Play Store (TPB DEV)</small>
-              <strong><a href="https://play.google.com/store/apps/developer?id=TPB+DEV" target="_blank" rel="noopener">Ver Apps no Google Play ↗</a></strong>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <div class="contact-card-icon">🐙</div>
-            <div class="contact-card-detail">
-              <small>Repositórios & Código</small>
-              <strong><a href="https://github.com/Glaycon" target="_blank" rel="noopener">github.com/Glaycon ↗</a></strong>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="contact-form-box">
-          <form id="contact-form" action="https://formsubmit.co/glaycon25@gmail.com" method="POST">
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_subject" value="Novo contato via Glaycon.dev" />
-            <div class="form-group">
-              <label class="form-label" for="name">Seu Nome</label>
-              <input type="text" id="name" name="name" class="form-input" placeholder="Ex: Maria Silva" required />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="email">Seu E-mail ou WhatsApp</label>
-              <input type="text" id="email" name="email" class="form-input" placeholder="Ex: maria@email.com ou (31) 99999-9999" required />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="message">Mensagem / Detalhes do Projeto</label>
-              <textarea id="message" name="message" class="form-input" placeholder="Conte um pouco sobre o que você deseja construir..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem →</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODALS -->
-  <!-- Project Detail Modal -->
-  <div class="modal-backdrop" id="project-modal">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeProjectModal()">✕</button>
-      <div id="project-modal-body"></div>
+    <div class="btns">
+      <a href="https://glaycon.github.io/" class="btn btn-primary">Ver Portfólio Principal →</a>
+      <a href="https://play.google.com/store/apps/developer?id=TPB+DEV" target="_blank" rel="noopener" class="btn btn-outline">Apps no Google Play (TPB DEV) ↗</a>
+      <a href="https://wa.me/5531991512019" target="_blank" rel="noopener" class="btn btn-outline">Falar no WhatsApp 💬</a>
     </div>
   </div>
 
+  <script>
+    // Simple 60fps ambient background canvas
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [];
 
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particles = Array.from({ length: 50 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        r: Math.random() * 2 + 1
+      }));
+    }
 
-  <!-- TOAST NOTIFICATION CONTAINER -->
-  <div id="toast-container"></div>
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#inicio" class="logo">
-            <div class="logo-icon">⬡</div>
-            <div class="logo-text">Glaycon<span>.dev</span></div>
-          </a>
-          <p>Plataforma oficial de exibição de projetos, sistemas web e código de alta performance.</p>
-        </div>
-
-        <div>
-          <h4 class="footer-title">Navegação</h4>
-          <ul class="footer-links">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#habilidades">Habilidades</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-title">Links Úteis</h4>
-          <ul class="footer-links">
-            <li><a href="https://github.com/Glaycon" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="https://glaycon.github.io/dev/" target="_blank" rel="noopener">GitHub Pages</a></li>
-            <li><a href="#contato">Contato Direct</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 Glaycon.dev. Todos os direitos reservados.</p>
-        <a href="#inicio" class="back-to-top" title="Voltar ao topo">↑</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Script -->
-  <script src="script.js"></script>
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
+  </script>
 </body>
 </html>
