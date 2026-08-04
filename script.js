@@ -269,10 +269,12 @@ const defaultProjects = [
     id: 101,
     title: "Sorteio Rápido",
     category: "mobile",
-    categoryLabel: "Mobile Android",
+    categoryLabel: "Google Play Store",
     desc: "Aplicativo Android para realização de sorteios instantâneos de números, nomes e listas com alta performance.",
     icon: "🎲",
-    status: "+10k Downloads",
+    isApp: true,
+    appBg: "linear-gradient(135deg, #00f0ff, #7000ff)",
+    status: "⭐ 4.8 • +10k Downloads",
     tech: ["Android Studio", "Kotlin", "Android SDK", "Google Play"],
     demoUrl: "https://play.google.com/store/apps/developer?id=TPB+DEV",
     githubUrl: "https://github.com/Glaycon",
@@ -282,10 +284,12 @@ const defaultProjects = [
     id: 102,
     title: "Calcular Metro Quadrado",
     category: "mobile",
-    categoryLabel: "Mobile Android",
+    categoryLabel: "Google Play Store",
     desc: "Ferramenta Android de utilidade para cálculo preciso de áreas, metros quadrados e quantitativos para obras.",
     icon: "📐",
-    status: "No Ar no Google Play",
+    isApp: true,
+    appBg: "linear-gradient(135deg, #10b981, #00f0ff)",
+    status: "🟢 No Ar no Google Play",
     tech: ["Android Studio", "Kotlin", "Material Design", "Room"],
     demoUrl: "https://play.google.com/store/apps/developer?id=TPB+DEV",
     githubUrl: "https://github.com/Glaycon",
@@ -295,10 +299,12 @@ const defaultProjects = [
     id: 103,
     title: "GLOBAL RÁDIO",
     category: "mobile",
-    categoryLabel: "Mobile Android",
+    categoryLabel: "Google Play Store",
     desc: "Aplicativo móvel para transmissão contínua de áudio e streaming de rádios online com baixa latência.",
     icon: "📻",
-    status: "No Ar no Google Play",
+    isApp: true,
+    appBg: "linear-gradient(135deg, #ec4899, #8b5cf6)",
+    status: "🟢 No Ar no Google Play",
     tech: ["Android Studio", "Kotlin", "ExoPlayer", "Streaming API"],
     demoUrl: "https://play.google.com/store/apps/developer?id=TPB+DEV",
     githubUrl: "https://github.com/Glaycon",
@@ -313,8 +319,8 @@ const defaultProjects = [
     icon: "⚡",
     status: "No Ar",
     tech: ["HTML5", "CSS3", "JavaScript", "Canvas", "GitHub Pages"],
-    demoUrl: "https://glaycon.github.io/dev/",
-    githubUrl: "https://github.com/Glaycon/dev",
+    demoUrl: "https://glaycon.github.io/",
+    githubUrl: "https://github.com/Glaycon/glaycon.github.io",
     longDesc: "Plataforma web de altíssimo desempenho focada em apresentação de projetos, métricas e interações dinâmicas sem dependências de frameworks pesados."
   },
   {
@@ -326,7 +332,7 @@ const defaultProjects = [
     icon: "📺",
     status: "Ativo",
     tech: ["C#", "WPF", "FFmpeg", "MySQL"],
-    demoUrl: "#",
+    demoUrl: "https://play.google.com/store/apps/developer?id=TPB+DEV",
     githubUrl: "https://github.com/Glaycon",
     longDesc: "Aplicativo desktop para gerenciamento e reprodução contínua de listas de transmissão com baixa latência e consumo reduzido de memória."
   },
@@ -339,7 +345,7 @@ const defaultProjects = [
     icon: "🛠️",
     status: "Em Produção",
     tech: ["Node.js", "Express", "Redis", "Docker", "PostgreSQL"],
-    demoUrl: "#",
+    demoUrl: "https://github.com/Glaycon",
     githubUrl: "https://github.com/Glaycon",
     longDesc: "API RESTful resiliente arquitetada com Redis para cache dinâmico e contêineres Docker automatizados."
   }
@@ -380,11 +386,18 @@ function renderProjects(category) {
 
   filtered.forEach(p => {
     const techTags = p.tech.map(t => `<span class="tag">${t}</span>`).join('');
+    
+    const iconHeader = p.isApp 
+      ? `<div class="app-squircle" style="background:${p.appBg}">${p.icon}</div>` 
+      : `<div class="project-preview-icon">${p.icon || '🚀'}</div>`;
+
+    const buttonLabel = p.category === 'mobile' ? 'Ver no Google Play ↗' : 'Ver Projeto ↗';
+
     html += `
       <article class="project-card" data-id="${p.id}">
         <div class="project-preview">
-          <div class="project-preview-icon">${p.icon || '🚀'}</div>
-          <span class="project-status-tag">🟢 ${p.status || 'Ativo'}</span>
+          ${iconHeader}
+          <span class="project-status-tag">${p.status || '🟢 Ativo'}</span>
         </div>
         <div class="project-content">
           <span class="project-category">${p.categoryLabel || p.category}</span>
@@ -393,8 +406,7 @@ function renderProjects(category) {
           <div class="project-tech">${techTags}</div>
           <div class="project-actions">
             <button class="btn btn-outline btn-sm" onclick="openProjectModal(${p.id})">Detalhes</button>
-            ${p.demoUrl && p.demoUrl !== '#' ? `<a href="${p.demoUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Ver na Store / Demo →</a>` : ''}
-            ${p.githubUrl ? `<a href="${p.githubUrl}" target="_blank" rel="noopener" class="btn btn-outline btn-sm" title="Código no GitHub">GitHub ↗</a>` : ''}
+            <a href="${p.demoUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">${buttonLabel}</a>
           </div>
         </div>
       </article>
